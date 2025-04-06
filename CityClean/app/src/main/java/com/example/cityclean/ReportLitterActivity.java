@@ -18,8 +18,15 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
 public class ReportLitterActivity extends AppCompatActivity {
     Button uploadPhoto;
+    Button submitReport;
+    // temp username
+    String username = "user1";
+    FileInputStream fileInputStream;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +65,29 @@ public class ReportLitterActivity extends AppCompatActivity {
                     .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
                     .build());
         });
+        submitReport = findViewById(R.id.submitReport);
+        submitReport.setOnClickListener(view -> {
+            Toast.makeText(this, "Report submitted", Toast.LENGTH_SHORT).show();
 
 
+            EditText editText = findViewById(R.id.editTextTextMultiLine);
+            String comment = editText.getText().toString();
+
+            // storing by seperated tabs (3 spaces). Not ideal but it will work for this purpose
+            // temp username right now
+            String fileContents = username + "   " + comment + "   " + lat + "   " + lng;
+            String filename = "reports.txt";
+            FileOutputStream fileOutputStream;
+            try {
+                fileOutputStream = openFileOutput(filename, MODE_APPEND);
+                fileOutputStream.write(fileContents.getBytes());
+                fileOutputStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            Intent intent1 = new Intent(this, MainActivity.class);
+            startActivity(intent1);
+        });
     }
 }

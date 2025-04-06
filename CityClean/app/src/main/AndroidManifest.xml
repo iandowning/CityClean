@@ -16,10 +16,12 @@
         android:theme="@style/Theme.CityClean"
         tools:targetApi="31">
         <activity
+            android:name=".UserPage"
+            android:exported="false" />
+        <activity
             android:name=".ReportLitterActivity"
             android:exported="false"
-            android:parentActivityName=".MainMap"/>
-
+            android:parentActivityName=".MainMap" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 

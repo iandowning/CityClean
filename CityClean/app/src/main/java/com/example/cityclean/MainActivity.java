@@ -1,5 +1,6 @@
 package com.example.cityclean;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -23,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         goMap = findViewById(R.id.GoMap);
-
+        goMap.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MainMap.class);
+            startActivity(intent);
+        });
     }
 }

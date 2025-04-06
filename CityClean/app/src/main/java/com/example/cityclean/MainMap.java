@@ -9,6 +9,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.cityclean.databinding.ActivityMainMapBinding;
 
@@ -16,6 +17,10 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ActivityMainMapBinding binding;
+    //Set target locations
+    private LatLng Kelowna = new LatLng(49.8801, -119.4436);
+    private LatLng UBCO = new LatLng(49.9394, -119.3948);
+    private LatLng LakeCountry = new LatLng(50.0537, -119.4106);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +47,23 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //enable zoom control
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+//        // Add a marker in Sydney and move the camera
+//        LatLng sydney = new LatLng(-34, 151);
+//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //Marker for Kelowna, UBCO, LakeCountry
+        Marker marker_Kelowna = mMap.addMarker(
+                new MarkerOptions().position(Kelowna).title("Kelowna")
+        );
+        Marker marker_UBCO = mMap.addMarker(
+                new MarkerOptions().position(UBCO).title("UBCO")
+        );
+        Marker marker_LakeCountry = mMap.addMarker(
+                new MarkerOptions().position(LakeCountry).title("Lake Country")
+        );
+        //move to Kelowna and zoom 10
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Kelowna,10));
     }
 }

@@ -65,6 +65,8 @@ public class ReportLitterActivity extends AppCompatActivity {
                     .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
                     .build());
         });
+
+        username = MainActivity.UsernameSetter.getUsername(this);
         submitReport = findViewById(R.id.submitReport);
         submitReport.setOnClickListener(view -> {
             Toast.makeText(this, "Report submitted", Toast.LENGTH_SHORT).show();

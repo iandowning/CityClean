@@ -1,8 +1,11 @@
 package com.example.cityclean;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -14,7 +17,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.cityclean.databinding.ActivityMainMapBinding;
 
 public class MainMap extends FragmentActivity implements OnMapReadyCallback {
-
+    private Marker selectedMarker;
     private GoogleMap mMap;
     private ActivityMainMapBinding binding;
     //Set target locations
@@ -65,5 +68,17 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback {
         );
         //move to Kelowna and zoom 10
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Kelowna,10));
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(@NonNull LatLng latLng) {
+                selectedMarker = mMap.addMarker(new MarkerOptions().position(latLng));
+
+                Intent intent = new Intent(MainMap.this, ReportLitterActivity.class);
+                intent.putExtra("lat", latLng.latitude);
+                intent.putExtra("lng", latLng.longitude);
+                Toast.makeText(MainMap.this, "Pin dropped at Lat: " + latLng.latitude + " Lng: " + latLng.longitude, Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+            }
+        });
     }
 }

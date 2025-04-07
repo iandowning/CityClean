@@ -45,13 +45,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             intent.putExtra("id", item.getId());
             context.startActivity(intent);
         });
-
-//        // delete
-//        holder.deleteButton.setOnClickListener(v -> {
-//            itemList.remove(position);
-//            notifyItemRemoved(position);
-//            Toast.makeText(context, "Item deleted", Toast.LENGTH_SHORT).show();
-//        });
+        
+        //edit
+        holder.editButton.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ReportDetial.class);
+            intent.putExtra("id", item.getId());
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -62,13 +62,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView date;
         ImageView image;
-        Button deleteButton;
+        Button editButton;
 
         ViewHolder(View itemView) {
             super(itemView);
             date = itemView.findViewById(R.id.item_date);
             image = itemView.findViewById(R.id.item_image);
-            //deleteButton = itemView.findViewById(R.id.item_delete);
+            editButton = itemView.findViewById(R.id.item_edit);
         }
     }
 }

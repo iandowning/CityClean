@@ -59,12 +59,12 @@ public class MainActivity extends AppCompatActivity {
             }
 
             checkUserCredentials(userStr, passStr);
-
-            dev_user = findViewById(R.id.Dev_user);
-            dev_user.setOnClickListener(v -> {
-                Intent intent = new Intent(this, UserPage.class);
-                startActivity(intent);
-            });
+        });
+        //this for develop
+        dev_user = findViewById(R.id.Dev_user);
+        dev_user.setOnClickListener(v -> {
+            Intent intent = new Intent(this, UserPage.class);
+            startActivity(intent);
         });
     }
 

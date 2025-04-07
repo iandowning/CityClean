@@ -59,10 +59,10 @@ public class UserPage extends AppCompatActivity {
     private void goManageReports(){
         //This function actually need the User data to work, but for now, just make it run able.
         Intent intent = new Intent(this, ManageReports.class);
-        Bundle bundle = intent.getExtras();
+        //Bundle bundle = intent.getExtras();
         //user bundle to trans user data to next view
 
-        intent.putExtras(bundle);
+        //intent.putExtras(bundle);
         startActivity(intent);
     }
 }

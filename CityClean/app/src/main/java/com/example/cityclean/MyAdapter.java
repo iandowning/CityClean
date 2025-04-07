@@ -2,6 +2,7 @@ package com.example.cityclean;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             intent.putExtra("id", item.getId());
             context.startActivity(intent);
         });
-        
+
         //edit
         holder.editButton.setOnClickListener(v -> {
             Intent intent = new Intent(context, ReportDetial.class);

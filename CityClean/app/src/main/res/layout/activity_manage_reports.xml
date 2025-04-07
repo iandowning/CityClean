@@ -33,7 +33,9 @@
         android:id="@+id/MR_reports"
         android:layout_width="409dp"
         android:layout_height="613dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="65dp" />
+        android:layout_marginTop="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RM_toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

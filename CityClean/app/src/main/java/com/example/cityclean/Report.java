@@ -8,6 +8,7 @@ public class Report {
     private String imagePath;
     private boolean isClean;
 
+    public Report(){}
     public Report(int id, String address, String date, String comment, String imagePath, boolean isClean) {
         this.id = id;
         this.address = address;

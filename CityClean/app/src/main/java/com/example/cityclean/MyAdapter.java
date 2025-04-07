@@ -43,14 +43,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // go to detial page
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ReportDetial.class);
-            intent.putExtra("id", item.getId());
+            intent.putExtra("Report", item);
             context.startActivity(intent);
         });
 
         //edit
         holder.editButton.setOnClickListener(v -> {
             Intent intent = new Intent(context, ReportDetial.class);
-            intent.putExtra("id", item.getId());
+            intent.putExtra("Report", item);
             context.startActivity(intent);
         });
     }

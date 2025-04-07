@@ -1,6 +1,8 @@
 package com.example.cityclean;
 
-public class Report {
+import java.io.Serializable;
+
+public class Report implements Serializable {
     private int id;
     private String address;
     private String date;

@@ -25,6 +25,7 @@ public class UserPage extends AppCompatActivity {
     private TextView points_totalGet;
     private TextView points_current;
     private Button manageReports;
+    private String userName_str;
     // Firebase Database
     private DatabaseReference mDatabase;
     // possible need to get user inf form preview page to connect db to get other data
@@ -48,6 +49,8 @@ public class UserPage extends AppCompatActivity {
         points_totalGet  = findViewById(R.id.User_getPointsCount);
         points_current = findViewById(R.id.User_currentPointsCount);
         manageReports = findViewById(R.id.User_manageReports);
+        //get user name
+        userName_str = MainActivity.UsernameSetter.getUsername(this);
 
         //Unknow the DB structure now, so no develop the data show part now.
 
@@ -55,14 +58,15 @@ public class UserPage extends AppCompatActivity {
         manageReports.setOnClickListener(v -> {
             goManageReports();
         });
+        //set page
+        setPage();
     }
     private void goManageReports(){
-        //This function actually need the User data to work, but for now, just make it run able.
         Intent intent = new Intent(this, ManageReports.class);
-        //Bundle bundle = intent.getExtras();
-        //user bundle to trans user data to next view
-
-        //intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    private void setPage(){
+        userName.setText(userName_str);
     }
 }

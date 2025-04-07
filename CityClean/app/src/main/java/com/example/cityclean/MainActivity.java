@@ -28,9 +28,6 @@ public class MainActivity extends AppCompatActivity {
     // Firebase Database
     private DatabaseReference mDatabase;
 
-    //developer
-    Button dev_user;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,12 +56,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             checkUserCredentials(userStr, passStr);
-        });
-        //this for develop
-        dev_user = findViewById(R.id.Dev_user);
-        dev_user.setOnClickListener(v -> {
-            Intent intent = new Intent(this, UserPage.class);
-            startActivity(intent);
         });
     }
 

@@ -29,4 +29,11 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:title="Manage Report" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/MR_reports"
+        android:layout_width="409dp"
+        android:layout_height="613dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="65dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,23 +35,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         Report item = itemList.get(position);
         holder.date.setText(item.getDate());
 
-        // 设置图片
+        // set image
         int imageResId = context.getResources().getIdentifier(item.getImagePath(), "drawable", context.getPackageName());
         holder.image.setImageResource(imageResId);
 
-        // 点击事件
+        // go to detial page
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ReportDetial.class);
             intent.putExtra("id", item.getId());
             context.startActivity(intent);
         });
 
-        // 删除按钮
-        holder.deleteButton.setOnClickListener(v -> {
-            itemList.remove(position);
-            notifyItemRemoved(position);
-            Toast.makeText(context, "Item deleted", Toast.LENGTH_SHORT).show();
-        });
+//        // delete
+//        holder.deleteButton.setOnClickListener(v -> {
+//            itemList.remove(position);
+//            notifyItemRemoved(position);
+//            Toast.makeText(context, "Item deleted", Toast.LENGTH_SHORT).show();
+//        });
     }
 
     @Override

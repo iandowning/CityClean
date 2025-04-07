@@ -64,8 +64,8 @@ public class ManageReports extends AppCompatActivity {
         //set adapter for reports, the list will auto
         reports.setAdapter(adapter);
 
-        //add data to Firebase for test function
-        addReports();
+//        //add data to Firebase for test function
+//        addReports();
 
         //read data and set reports
         readData();
@@ -106,9 +106,9 @@ public class ManageReports extends AppCompatActivity {
         });
     }
     //this function will add data into firebase for test the reading function
-    private void addReports(){
-        DatabaseReference reports = userDatabase.child("reports");
-        reports.push().setValue(new Report(1, "Address 1", "2025-04-06", "Sample Comment", "image1", true));
-        reports.push().setValue(new Report(2, "Address 2", "2025-04-07", "Sample Comment", "image2", false));
-    }
+//    private void addReports(){
+//        DatabaseReference reports = userDatabase.child("reports");
+//        reports.push().setValue(new Report(1, "Address 1", "2025-04-06", "Sample Comment", "image1", true));
+//        reports.push().setValue(new Report(2, "Address 2", "2025-04-07", "Sample Comment", "image2", false));
+//    }
 }

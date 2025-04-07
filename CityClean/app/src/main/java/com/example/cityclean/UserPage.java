@@ -1,6 +1,11 @@
 package com.example.cityclean;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +13,21 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.database.DatabaseReference;
+
 public class UserPage extends AppCompatActivity {
+
+    //views be used
+    private ImageView userImage;
+    private TextView userName;
+    private TextView litterReported;
+    private TextView litterCleaned;
+    private TextView points_totalGet;
+    private TextView points_current;
+    private Button manageReports;
+    // Firebase Database
+    private DatabaseReference mDatabase;
+    // possible need to get user inf form preview page to connect db to get other data
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +39,30 @@ public class UserPage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //get views
+        userImage = findViewById(R.id.User_userImage);
+        userName = findViewById(R.id.User_userName);
+        litterReported = findViewById(R.id.User_reportLitter_count);
+        litterCleaned = findViewById(R.id.User_cleanLitterCount);
+        points_totalGet  = findViewById(R.id.User_getPointsCount);
+        points_current = findViewById(R.id.User_currentPointsCount);
+        manageReports = findViewById(R.id.User_manageReports);
+
+        //Unknow the DB structure now, so no develop the data show part now.
+
+        //bound click listener to manage reports button
+        manageReports.setOnClickListener(v -> {
+            goManageReports();
+        });
+    }
+    private void goManageReports(){
+        //This function actually need the User data to work, but for now, just make it run able.
+        Intent intent = new Intent(this, ManageReports.class);
+        Bundle bundle = intent.getExtras();
+        //user bundle to trans user data to next view
+
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

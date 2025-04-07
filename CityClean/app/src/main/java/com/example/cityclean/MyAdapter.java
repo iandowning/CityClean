@@ -68,7 +68,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             super(itemView);
             date = itemView.findViewById(R.id.item_date);
             image = itemView.findViewById(R.id.item_image);
-            deleteButton = itemView.findViewById(R.id.item_delete);
+            //deleteButton = itemView.findViewById(R.id.item_delete);
         }
     }
 }

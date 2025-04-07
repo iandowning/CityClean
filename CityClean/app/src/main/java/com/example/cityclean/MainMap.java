@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -25,6 +26,9 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback {
     private LatLng UBCO = new LatLng(49.9394, -119.3948);
     private LatLng LakeCountry = new LatLng(50.0537, -119.4106);
 
+    //used views
+    private Button goUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,13 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        //get views
+        goUser = findViewById(R.id.Map_goUser);
+        //bound functions on button
+        goUser.setOnClickListener(v -> {
+            setGoUser();
+        });
     }
 
     /**
@@ -52,10 +63,7 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback {
         mMap = googleMap;
         //enable zoom control
         mMap.getUiSettings().setZoomControlsEnabled(true);
-//        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(-34, 151);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
         //Marker for Kelowna, UBCO, LakeCountry
         Marker marker_Kelowna = mMap.addMarker(
                 new MarkerOptions().position(Kelowna).title("Kelowna")
@@ -80,5 +88,10 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback {
                 startActivity(intent);
             }
         });
+    }
+
+    private void setGoUser(){
+        Intent intent = new Intent(this, UserPage.class);
+        startActivity(intent);
     }
 }

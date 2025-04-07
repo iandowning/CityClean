@@ -34,10 +34,11 @@ public class UserPage extends AppCompatActivity {
     private TextView points_totalGet;
     private TextView points_current;
     private Button manageReports;
-    private String userName_str;
+    private Button back;
     // Firebase Database
     private DatabaseReference mDatabase;
-    // possible need to get user inf form preview page to connect db to get other data
+    //user name
+    private String userName_str;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,15 +59,20 @@ public class UserPage extends AppCompatActivity {
         points_totalGet  = findViewById(R.id.User_getPointsCount);
         points_current = findViewById(R.id.User_currentPointsCount);
         manageReports = findViewById(R.id.User_manageReports);
+        back = findViewById(R.id.User_back);
+
         //get user name
         userName_str = MainActivity.UsernameSetter.getUsername(this);
 
         //set DB root to user (based on userName)
         mDatabase = FirebaseDatabase.getInstance().getReference("users").child(userName_str);
 
-        //bound click listener to manage reports button
+        //bound click listener to buttons
         manageReports.setOnClickListener(v -> {
             goManageReports();
+        });
+        back.setOnClickListener(v -> {
+            finish();
         });
         //read DB and set page
         readDB();

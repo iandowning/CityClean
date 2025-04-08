@@ -36,7 +36,7 @@ public class UserPage extends AppCompatActivity {
     private Button manageReports;
     private Button back;
     // Firebase Database
-    private DatabaseReference mDatabase;
+    private DatabaseReference userDatabase;
     //user name
     private String userName_str;
 
@@ -65,7 +65,7 @@ public class UserPage extends AppCompatActivity {
         userName_str = MainActivity.UsernameSetter.getUsername(this);
 
         //set DB root to user (based on userName)
-        mDatabase = FirebaseDatabase.getInstance().getReference("users").child(userName_str);
+        userDatabase = FirebaseDatabase.getInstance().getReference("users").child(userName_str);
 
         //bound click listener to buttons
         manageReports.setOnClickListener(v -> {
@@ -97,7 +97,7 @@ public class UserPage extends AppCompatActivity {
     }
 
     private void readDB(){
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        userDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {

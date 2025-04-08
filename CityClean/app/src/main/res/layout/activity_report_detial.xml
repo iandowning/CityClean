@@ -56,7 +56,7 @@
         app:title="Report Detile" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/RD_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginStart="16dp"
@@ -98,7 +98,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/RD_Comment"
+        android:id="@+id/RD_comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -119,7 +119,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/RD_commentContent"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="424dp"
@@ -142,7 +142,7 @@
         android:layout_marginTop="372dp"
         android:hint="Type below to edit"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/RD_Comment"
+        app:layout_constraintStart_toEndOf="@+id/RD_comment"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,8 +37,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.date.setText(item.getDate());
 
         // set image
-        int imageResId = context.getResources().getIdentifier(item.getImagePath(), "drawable", context.getPackageName());
-        holder.image.setImageResource(imageResId);
+        //int imageResId = context.getResources().getIdentifier(item.getImagePath(), "drawable", context.getPackageName());
+        //holder.image.setImageResource(imageResId);
 
         // go to detial page
         holder.itemView.setOnClickListener(v -> {

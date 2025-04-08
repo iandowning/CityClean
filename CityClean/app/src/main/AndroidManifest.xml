@@ -16,6 +16,9 @@
         android:theme="@style/Theme.CityClean"
         tools:targetApi="31">
         <activity
+            android:name=".ViewReportActivity"
+            android:exported="false" />
+        <activity
             android:name=".ReportDetial"
             android:exported="false" />
         <activity

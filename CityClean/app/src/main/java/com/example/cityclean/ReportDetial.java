@@ -46,7 +46,7 @@ public class ReportDetial extends AppCompatActivity {
         save = findViewById(R.id.RD_save);
         delete = findViewById(R.id.RD_delete);
         date = findViewById(R.id.RD_dateContent);
-        address = findViewById(R.id.RD_address);
+        address = findViewById(R.id.RD_addressContent);
         comment = findViewById(R.id.RD_commentContent);
         image = findViewById(R.id.RD_image);
         //get user name

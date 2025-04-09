@@ -51,6 +51,7 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback {
         //get views
         goUser = findViewById(R.id.Map_goUser);
         //bound functions on button
+
         goUser.setOnClickListener(v -> {
             setGoUser();
         });

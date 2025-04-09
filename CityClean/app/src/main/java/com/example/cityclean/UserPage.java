@@ -40,11 +40,6 @@ public class UserPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Button viewMapBtn = findViewById(R.id.User_viewMapReports);
-        viewMapBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ViewMapReportsActivity.class);
-            startActivity(intent);
-        });
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_user_page);
@@ -52,6 +47,12 @@ public class UserPage extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        Button viewMapBtn = findViewById(R.id.User_viewMapReports);
+        viewMapBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ViewMapReportsActivity.class);
+            startActivity(intent);
         });
 
         //get views

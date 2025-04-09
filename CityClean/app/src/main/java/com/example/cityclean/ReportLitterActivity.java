@@ -1,6 +1,8 @@
 package com.example.cityclean;
 
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.*;
@@ -10,6 +12,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
@@ -17,9 +20,16 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.Date;
+import java.util.Locale;
 
 public class ReportLitterActivity extends AppCompatActivity {
     Button uploadPhoto;
@@ -27,6 +37,10 @@ public class ReportLitterActivity extends AppCompatActivity {
     // temp username
     String username = "user1";
     FileInputStream fileInputStream;
+    private DatabaseReference mDatabase;
+    int  currentReportId;
+    Integer lastReportId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,8 +102,42 @@ public class ReportLitterActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            Intent intent1 = new Intent(this, MainActivity.class);
+            // Saving to firebase:
+            mDatabase = FirebaseDatabase.getInstance().getReference("users");
+            DatabaseReference reportsRef = mDatabase.child("reports");
+
+            reportsRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (!task.isSuccessful()){
+                        Log.e("firebase", "Error getting data", task.getException());
+                    } else {
+                        lastReportId = null;
+                        DataSnapshot receivedValue = task.getResult();
+
+                        for(DataSnapshot node: receivedValue.getChildren()) {
+                            Integer reportId = node.child("id").getValue(Integer.class);
+                            if (reportId != null) {
+                                lastReportId = reportId;
+                            }
+                        }
+                        if (lastReportId == null) {
+                            lastReportId = 0;
+                        }
+                    }
+                    currentReportId = lastReportId + 1;
+                    Report report = new Report(currentReportId, lat, lng, getCurrentDateTime(), comment, "Path_NA", false);
+                    reportsRef.push().setValue(report);
+                }
+                });
+            Intent intent1 = new Intent(this, MainMap.class);
             startActivity(intent1);
         });
+    }
+
+    public String getCurrentDateTime() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+        return dateFormat.format(date);
     }
 }

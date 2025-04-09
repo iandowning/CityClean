@@ -4,16 +4,17 @@ import java.io.Serializable;
 
 public class Report implements Serializable {
     private int id;
-    private String address;
+    private String location;
     private String date;
     private String comment;
     private String imagePath;
     private boolean isClean;
 
     public Report(){}
-    public Report(int id, String address, String date, String comment, String imagePath, boolean isClean) {
+
+    public Report(int id, double lat, double lng, String date, String comment, String imagePath, boolean isClean) {
         this.id = id;
-        this.address = address;
+        this.location = lat + ", " + lng;
         this.date = date;
         this.comment = comment;
         this.imagePath = imagePath;
@@ -36,12 +37,12 @@ public class Report implements Serializable {
 //        this.id = id;
 //    }
 
-    public String getAddress() {
-        return address;
+    public String getLocation() {
+        return location;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public void setDate(String date) {

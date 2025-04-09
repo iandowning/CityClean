@@ -119,7 +119,7 @@ public class ReportDetial extends AppCompatActivity {
         if (report != null) {
             // show things
             date.setText(report.getDate());
-            address.setText(report.getAddress());
+            address.setText(report.getLocation());
             comment.setText(report.getComment());
         }
     }

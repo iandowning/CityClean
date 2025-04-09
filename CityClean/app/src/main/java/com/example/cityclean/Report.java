@@ -11,6 +11,7 @@ public class Report implements Serializable {
     private boolean isClean;
 
     public Report(){}
+
     public Report(int id, double lat, double lng, String date, String comment, String imagePath, boolean isClean) {
         this.id = id;
         this.location = lat + ", " + lng;

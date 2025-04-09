@@ -54,8 +54,7 @@ public class ReportDetial extends AppCompatActivity {
         //get user name
         userName_str = MainActivity.UsernameSetter.getUsername(this);
         //set DB root to user (based on userName)
-        userDatabase = FirebaseDatabase.getInstance().getReference("users")
-                .child(userName_str).child("reports");
+        userDatabase = FirebaseDatabase.getInstance().getReference("users").child("reports");
         //get report
         report  = (Report) getIntent().getSerializableExtra("Report");
         //bound buttons

@@ -51,7 +51,7 @@ public class ManageReports extends AppCompatActivity {
         //get user name
         userName_str = MainActivity.UsernameSetter.getUsername(this);
         //set DB root to user (based on userName)
-        userDatabase = FirebaseDatabase.getInstance().getReference("users").child(userName_str);
+        userDatabase = FirebaseDatabase.getInstance().getReference("users");
         //set back button
         back.setOnClickListener(v -> {
             finish();

@@ -46,9 +46,7 @@ public class ViewMapReportsActivity extends AppCompatActivity implements OnMapRe
         });
         backBtn = findViewById(R.id.VMR_back);
         username = MainActivity.UsernameSetter.getUsername(this);
-        reportsRef = FirebaseDatabase.getInstance().getReference("users")
-                .child(username)
-                .child("reports");
+        reportsRef = FirebaseDatabase.getInstance().getReference("users").child("reports");
         backBtn.setOnClickListener(v -> finish());
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);

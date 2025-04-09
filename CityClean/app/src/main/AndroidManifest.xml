@@ -28,6 +28,10 @@
             android:name=".ReportLitterActivity"
             android:exported="false"
             android:parentActivityName=".MainMap" />
+        <activity
+            android:name=".RecordCleanLitterActivity"
+            android:exported="false"
+            android:parentActivityName=".MainMap" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 

@@ -33,16 +33,16 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = ActivityMainMapBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         goRecordClean = findViewById(R.id.Map_goRecordClean);
         goRecordClean.setOnClickListener(v -> {
-            Intent intent = new Intent(MainMap.this, RecordCleanLitterActivity.class);
+            Intent intent = new Intent(this, RecordCleanLitterActivity.class);
             intent.putExtra("lat", 49.8801);
             intent.putExtra("lng", -119.4436);
             startActivity(intent);
         });
 
-        binding = ActivityMainMapBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);

@@ -35,13 +35,16 @@ public class UserPage extends AppCompatActivity {
     private TextView points_current;
     private Button manageReports;
     private Button back;
-    // Firebase Database
     private DatabaseReference userDatabase;
-    //user name
     private String userName_str;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button viewMapBtn = findViewById(R.id.User_viewMapReports);
+        viewMapBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ViewMapReportsActivity.class);
+            startActivity(intent);
+        });
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_user_page);
@@ -129,8 +132,6 @@ public class UserPage extends AppCompatActivity {
                     }else {
                         points_current_str = "N/A";
                     }
-
-                    //add datas into list
                     linesDB.add(userName_str1);
                     linesDB.add(litterReported_str);
                     linesDB.add(litterCleaned_str);
